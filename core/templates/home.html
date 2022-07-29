@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Share</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <style>
+        body{
+            height:100vh;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+      form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      label{
+        display: block;
+      }
+      #file{
+        background-color: blueviolet;
+       
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form enctype="multipart/form-data" action="" method="POST">
+                    {% csrf_token %}
+                <label for="file mx-auto" class="text-white" style="font-weight:bolder ;font-family:Arial, Helvetica, sans-serif">Upload Your File</label>
+                <input type="file" id="file" style="box-shadow:1px 1px 1px rgb(222, 171, 171),-1px -1px 1px white ;" class="mx-auto text-white" name="files" required>
+                <input type="submit" class="btn btn-warning my-3 mx-auto" value="Upload">
+            </form>
+            <div class="text-primary" style="display:flex ;flex-direction:column ;justify-content:center;align-items: center;">
+            {% if file %}
+            https://fileshare10.herokuapp.com{{file}}
+          
+           <br><br>
+           <strong class="text-success">Copy this url and paste it on the browser and hit enter to download the uploaded file</strong>
+            {% endif %}
+        </div>
+        
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
